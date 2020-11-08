@@ -30,7 +30,15 @@ class TodolistsController < ApplicationController
   
   private
   def list_params
-    params.require(:list).permit(:title, :body, :image)  end
+    params.require(:list).permit(:title, :body, :image)  
+  end
+  
+  def destroy
+    list = List.find(oarams[:id])
+    list.destroy 
+    redirect_to todolists_path
+  end
+  
   
 end
 
